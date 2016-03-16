@@ -11,7 +11,7 @@ type App struct {
 	PageTitle string
 }
 
-func (c App) PageLoad() revel.Result {
+func (c *App) PageLoad() revel.Result {
 	c.PageTitle = "Correct page title"
 	return nil
 }
