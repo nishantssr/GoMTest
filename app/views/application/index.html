@@ -1,0 +1,18 @@
+{{set . "title" .PageTitle}}
+{{template "header.html" .}}
+
+<div id="login">
+
+  <form action="{{url "Application.IndexPost"}}" id="formCreateCase" method="POST">
+    <p class="field">
+      <label>Message:</label>
+      <textarea id="inputMessage" name="message" rows="5"></textarea>
+    </p>
+    <p class="buttons">
+      <input type="submit" value="Boom" />
+    </p>
+  </form>
+
+</div>
+
+{{template "footer.html" .}}
