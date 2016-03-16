@@ -5,10 +5,11 @@ import (
 	"flag"
 	"reflect"
 	"github.com/revel/revel"
-	_ "bitbucket.org/evard/evardbugs/app"
-	controllers "bitbucket.org/evard/evardbugs/app/controllers"
+	_ "GoMTest/app"
+	controllers "GoMTest/app/controllers"
 	_ "github.com/lib/pq"
-	controllers0 "github.com/revel/revel/modules/static/app/controllers"
+	controllers0 "github.com/revel/modules/static/app/controllers"
+	"github.com/revel/revel/testing"
 )
 
 var (
@@ -107,7 +108,7 @@ func main() {
 	
 	revel.DefaultValidationKeys = map[string]map[int]string{ 
 	}
-	revel.TestSuites = []interface{}{ 
+	testing.TestSuites = []interface{}{ 
 	}
 
 	revel.Run(*port)

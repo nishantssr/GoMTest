@@ -4,6 +4,7 @@ import (
 	"bitbucket.org/evard/evardbugs/app/models"
 	"bitbucket.org/evard/evardbugs/app/routes"
 	"github.com/revel/revel"
+	"github.com/ottob/go-semver/semver"
 )
 
 type App struct {
@@ -22,7 +23,13 @@ func (c App) Index() revel.Result {
 }
 
 func (c App) IndexPost(message string) revel.Result {
-	newCase := models.Case{Message: message}
+	s := revel.Config.StringDefault("app.version", "0.1")
+	ver, err := semver.NewVersion(s)
+	if err != nil {
+		panic(err)
+	}
+
+	newCase := models.Case{Message: message, GuideVersion: ver}
 
 	if err := c.Txn.Insert(&newCase); err != nil {
 		panic(err)
